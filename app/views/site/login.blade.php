@@ -1,8 +1,6 @@
-@extends('layouts.master')
-
 @section('content')
-<h1>Daftar</h1>
-<form action='daftar' method='post'>
+<h1>Login</h1>
+<form action='login' method='post'>
 	<?= Form::token();?>
 	
 	<div>
@@ -15,8 +13,9 @@
 		<input type="password" name="password">
 		<span>{{$errors->first('password')}}</span>
 	</div>
-	<button type="submit">Daftar</button>
+	<button type="submit">Login</button>
 </form>
-
+Belum punya akun? Silakan <a href='daftar'>daftar disini</a>
 @stop
+
 

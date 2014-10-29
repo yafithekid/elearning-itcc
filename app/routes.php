@@ -18,6 +18,9 @@ Route::group([],function(){
 	Route::get('about','SiteController@about');
 	Route::get('daftar','SiteController@showDaftar');
 	Route::post('daftar',['before'=>'csrf','uses'=>'SiteController@doDaftar']);
+	Route::get('login','SiteController@showLogin');
+	Route::post('login',['before'=>'csrf','uses'=>'SiteController@doLogin']);
+	Route::get('logout','SiteController@doLogout');
 });
 
 

@@ -17,7 +17,7 @@
 			<li>Beranda</li>
 			<li>Tentang</li>
 			@if (Auth::check())
-				<li>Logout</li>
+				<li><a href='logout'>Logout (<?=Auth::user()->username?>)</a> </li>
 			@else
 				<li>Login</li>
 			@endif

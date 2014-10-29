@@ -21,6 +21,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public $timestamps = false;
 
+	/**
+	 * digunakan buat laravel Auth::attempt
+	 */
+	public function getAuthIdentifier(){ return 'username'; }
 
 	public static $rules = [
 		'username' => ['unique:users','required'],
