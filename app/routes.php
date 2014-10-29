@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+/**
+ * root route seperti register, about, contact us
+ */
+Route::group([],function(){
+	Route::get('about','SiteController@about');
+	Route::get('daftar','SiteController@showDaftar');
+	Route::post('daftar','SiteController@doDaftar');
 });
-
 
 
