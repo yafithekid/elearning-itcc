@@ -12,12 +12,12 @@ class SiteController extends BaseController {
 
 		$validator = Validator::make(Input::all(),User::$rules);
 		if ($validator->fails()){
+			return Redirect::action('SiteController@showDaftar')->withInput()->withErrors($validator);
+		} else {
 			$model = new User;
 			$model->username = Input::get('username');
 			$model->password = sha1(Input::get('password'));
-
-			return Redirect::action('SiteController@showDaftar')->withInput()->withErrors($validator);
-		} else {
+			$model->save();
 			return View::make('site.daftar-berhasil');
 		}
 	}

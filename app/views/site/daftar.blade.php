@@ -2,6 +2,8 @@
 
 @section('content')
 <form action='daftar' method='post'>
+	<?= Form::token();?>
+	
 	<div>
 		<label for="username">Username</label>
 		<input type="text" name="username" value='<?=Input::old('username')?>'>
