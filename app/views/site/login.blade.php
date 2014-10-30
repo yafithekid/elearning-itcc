@@ -17,5 +17,3 @@
 </form>
 Belum punya akun? Silakan <a href='daftar'>daftar disini</a>
 @stop
-
-

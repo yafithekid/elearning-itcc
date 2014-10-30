@@ -4,7 +4,11 @@ class SiteController extends BaseController {
 
 	protected $layout = 'layouts.master';
 
+	public function showIndex() { return View::make('hello'); }
+
 	public function showDaftar() { return View::make('site.daftar'); }
+
+	public function showTambahCourse() { return View::make('site.tambah-course');}
 
 	public function doDaftar(){
 		$validator = Validator::make(Input::all(),User::$rules);
@@ -27,7 +31,7 @@ class SiteController extends BaseController {
 	public function doLogin(){
 		$user = [
 			'username' => Input::get('username'), 
-			'password' => Input::get('password') 
+			'password' => Hash::make(Input::get('password')) 
 			];
 
 		if (Auth::attempt($user)) {
@@ -42,4 +46,8 @@ class SiteController extends BaseController {
 		return Redirect::action('SiteController@showLogin');
 	}
 
+	public function showUser(){
+		$users = User::orderBy('username','desc')->paginate(1);
+		return View::make('site.user',['users' => $users]);
+	}
 }
