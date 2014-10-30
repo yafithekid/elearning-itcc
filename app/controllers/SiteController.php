@@ -27,11 +27,11 @@ class SiteController extends BaseController {
 	public function doLogin(){
 		$user = [
 			'username' => Input::get('username'), 
-			'password' => Input::get('password') 
+			'password' => Input::get('password'),
 			];
 
 		if (Auth::attempt($user)) {
-			return Redirect::action('SiteController@showLogin');
+			//return Redirect::action('SiteController@showLogin');
 		} else {
 			return Redirect::action('SiteController@showLogin')->withInput(Input::only(['username']));
 		}

@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::pattern('id', '[0-9]+');
 
 /**
  * root route seperti register, about, contact us
@@ -23,9 +24,12 @@ Route::group([],function(){
 	Route::get('logout','SiteController@doLogout');
 });
 
-Route::group(['prefix'=>'tugas'],function(){
-	Route::get('submit','TugasController@showSubmit');
-	Route::post('submit',['before'=>'csrf','uses'=>'TugasController@doSubmit']);
+Route::group(['prefix'=>'task'],function(){
+	Route::get('create','TaskController@showCreate');
+	Route::get('{id}/update','TaskController@showUpdate');
+	Route::get('{id}/delete','TaskController@showDelete');
+	Route::get('{id}','TaskController@showView');
+	Route::post('submit',['before'=>'csrf','uses'=>'TaskController@doSubmit']);
 });
 
 
