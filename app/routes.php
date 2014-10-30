@@ -23,4 +23,9 @@ Route::group([],function(){
 	Route::get('logout','SiteController@doLogout');
 });
 
+Route::group(['prefix'=>'tugas'],function(){
+	Route::get('submit','TugasController@showSubmit');
+	Route::post('submit',['before'=>'csrf','uses'=>'TugasController@doSubmit']);
+});
+
 
