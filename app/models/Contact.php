@@ -5,16 +5,14 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
-
-	use UserTrait, RemindableTrait;
+class Contact extends Eloquent {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'contacts';
 
 	/**
 	 * hapus created_at dan updated_at dari laravel
@@ -26,13 +24,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function getAuthIdentifier(){ return 'username'; }
 
-	public function contacts(){
-		return $this->hasMany('Contact','user_id','id');
+	public function user() {
+		return $this->belongsTo('User','user_id','id');
 	}
 
-	
+	public function contactUser() {
+		return $this->belongsTo('User','contact_user_id','id');
+	}
 
-	
+	public static $rules = [
+		'username' => ['unique:users','required'],
+		'password' => 'required',
+		'email' => 'required',
+		'fullname' => 'required',
+		'school' => 'required',
+	];
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -40,13 +46,5 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-
-	public static $rules = [
-		'username' => ['unique:users','required'],
-		'password' => 'required',
-		'email' => 'required',
-		'fullname' => 'required',
-		'school' => 'required'
-	];
 
 }

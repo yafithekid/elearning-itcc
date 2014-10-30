@@ -6,7 +6,8 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	{{ HTML::style('css/bootstrap.min.css'); }}
+	{{ HTML::script('js/jquery.min.js'); }}
 	<!--[if lt IE 9]>
         <script src="js/html5.js"></script>
 	<![endif]-->
@@ -27,7 +28,9 @@
 	@yield('content')
 
 	@section('footer')
+
 		created by kaito, yafi, willy
 	@show
 </body>
+
 </html>
